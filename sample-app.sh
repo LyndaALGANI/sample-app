@@ -27,8 +27,8 @@ COPY . .
 # Installe Flask via pip
 RUN pip install flask
 
-# Indique que l'application écoutera sur le port 5000
-EXPOSE 5000
+# Indique que l'application écoutera sur le port 5050
+EXPOSE 5050
 
 # Commande qui sera exécutée au démarrage du conteneur
 CMD ["python", "sample_app.py"]
@@ -38,8 +38,8 @@ EOF
 docker build -t sample-app "$TEMP_DIR"
 
 # Lance un conteneur à partir de l'image
-# -p 5000:5000 : fait correspondre le port 5000 du conteneur au port 5000 de votre machine
-docker run -p 5000:5000 sample-app
+# -p 5050:5050 : fait correspondre le port 5050 du conteneur au port 5050 de votre machine
+docker run -p 5050:5050 sample-app
 
 # Supprime le dossier temporaire et son contenu
 rm -rf "$TEMP_DIR"
