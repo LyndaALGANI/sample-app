@@ -7,4 +7,4 @@ def main():
 
 if __name__ == "__main__":
     # porte initiale 8080
-    sample.run(host="0.0.0.0", port=(5050)
+    sample.run(host="0.0.0.0", port=(5050))
