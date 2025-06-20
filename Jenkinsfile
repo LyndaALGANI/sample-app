@@ -1,19 +1,39 @@
+// pipeline {
+//   agent any
+//   stages {
+//     stage('Build') {
+//       steps {
+//         echo '▶ Démarrage de la compilation'
+//       }
+//     }
+//     stage('Test') {
+//       steps {
+//         echo '▶ Exécution des tests (simulation)'
+//       }
+//     }
+//     stage('Deploy') {
+//       steps {
+//         echo '▶ Simulation de déploiement'
+//       }
+//     }
+//   }
+// }
+
+
 pipeline {
-  agent any
+  agent {
+    docker { image 'python:3.11' }
+  }
   stages {
-    stage('Build') {
+    stage('Afficher version Python') {
       steps {
-        echo '▶ Démarrage de la compilation'
+        sh 'python --version'
       }
     }
-    stage('Test') {
+    stage('Exécuter un script Python') {
       steps {
-        echo '▶ Exécution des tests (simulation)'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        echo '▶ Simulation de déploiement'
+        sh 'echo "print(\'Hello depuis Docker !\')" > hello.py'
+        sh 'python hello.py'
       }
     }
   }
